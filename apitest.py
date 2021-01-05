@@ -1,6 +1,7 @@
 import requests
 import json
 import datetime
+from decouple import config
 
 #FUNCS
 def getName(host):
@@ -31,14 +32,21 @@ def main():
     return 0
 
 #API
+
+KEY = config('KEY')
+
 url = "https://community-open-weather-map.p.rapidapi.com/weather"
 querystring = {"q":"Cracow","units":"metric","mode":"XML"}
 headers = {
-    'x-rapidapi-key': "87d7a4fac2mshf51f4493c1bb2a5p16a2a9jsn8da5319efa79",
+    'x-rapidapi-key': KEY,
     'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com"
     }
 response = requests.request("GET", url, headers=headers, params=querystring)
-weather = response.json()
 
-#MAIN
-main()
+
+if response.status_code == 200:
+    weather = response.json()
+    main()
+
+else:
+    print("Error")
