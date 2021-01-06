@@ -32,13 +32,12 @@ def main():
     return 0
 
 #API
-
-KEY = config('KEY')
+APIKEY = config('KEY')
 
 url = "https://community-open-weather-map.p.rapidapi.com/weather"
 querystring = {"q":"Cracow","units":"metric","mode":"XML"}
 headers = {
-    'x-rapidapi-key': KEY,
+    'x-rapidapi-key': APIKEY,
     'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com"
     }
 response = requests.request("GET", url, headers=headers, params=querystring)
