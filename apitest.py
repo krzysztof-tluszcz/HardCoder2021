@@ -35,7 +35,7 @@ def main():
 APIKEY = config('KEY')
 
 url = "https://community-open-weather-map.p.rapidapi.com/weather"
-querystring = {"q":"Cracow","units":"metric","mode":"XML"}
+querystring = {"q":"Cracow","units":"metric"}
 headers = {
     'x-rapidapi-key': APIKEY,
     'x-rapidapi-host': "community-open-weather-map.p.rapidapi.com"
